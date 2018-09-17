@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+# colors in Terminal.app
+export CLICOLOR=true
+# dark theme for Terminal.app
+export LSCOLORS='GxFxCxDxBxegedabagaced'
+
+# agkozak
+AGKOZAK_CUSTOM_PROMPT='%(?..%B%F{red}(%?%)%f%b )'
+AGKOZAK_CUSTOM_PROMPT+='%(!.%S%B.%B%F{green})%n%1v%(!.%b%s.%f%b) '
+AGKOZAK_CUSTOM_PROMPT+=$'%B%F{blue}%2v%f%b%(3V.%F{yellow}%3v%f.)\n'
+AGKOZAK_CUSTOM_PROMPT+='$(_agkozak_vi_mode_indicator) '
+
+AGKOZAK_CUSTOM_RPROMPT=''
+
+AGKOZAK_BLANK_LINES=1
+AGKOZAK_PROMPT_DIRTRIM=2
