@@ -1,20 +1,25 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 exists tmux && {
-  # Configuration variables
+  # CONFIGURATION VARIABLES
   # Automatically start tmux
-  [[ -n "$ZSH_TMUX_AUTOSTART" ]] || ZSH_TMUX_AUTOSTART=false
+  : ${ZSH_TMUX_AUTOSTART:=false}
   # Only autostart once. If set to false, tmux will attempt to
   # autostart every time your zsh configs are reloaded.
-  [[ -n "$ZSH_TMUX_AUTOSTART_ONCE" ]] || ZSH_TMUX_AUTOSTART_ONCE=true
+  : ${ZSH_TMUX_AUTOSTART_ONCE:=true}
   # Automatically connect to a previous session if it exists
-  [[ -n "$ZSH_TMUX_AUTOCONNECT" ]] || ZSH_TMUX_AUTOCONNECT=true
+  : ${ZSH_TMUX_AUTOCONNECT:=true}
   # Automatically close the terminal when tmux exits
-  [[ -n "$ZSH_TMUX_AUTOQUIT" ]] || ZSH_TMUX_AUTOQUIT=$ZSH_TMUX_AUTOSTART
+  : ${ZSH_TMUX_AUTOQUIT:=$ZSH_TMUX_AUTOSTART}
 
   # Wrapper function for tmux.
   function _zsh_tmux_plugin_run()
   {
+    if [[ -n "$@" ]]; then
+      command tmux "$@"
+      return $?
+    fi
+
     if [[ "$ZSH_TMUX_AUTOCONNECT" == "true" ]]; then
       tmux ls && read -r tmux_session && tmux attach -t "${tmux_session:-default}" || tmux new -s "${tmux_session:-default}"
       [[ "$ZSH_TMUX_AUTOQUIT" == "true" ]] && exit

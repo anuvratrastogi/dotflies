@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'
