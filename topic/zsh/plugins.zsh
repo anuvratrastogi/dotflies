@@ -33,9 +33,3 @@ zplugin light "paoloantinori/hhighlighter"
 # -----
 
 zplugin snippet "OMZ::plugins/sudo/sudo.plugin.zsh"
-
-# -----
-# fzf
-# -----
-
-zplugin ice from"gh-r" as"command"; zplugin light "junegunn/fzf-bin"

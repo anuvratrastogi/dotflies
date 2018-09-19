@@ -86,12 +86,12 @@ for completions in ${(M)zsh_files:#*/completions.zsh}; do
   source $completions
 done
 
+# load key-bindings
+for keys in ${(M)zsh_files:#*/keys.zsh}; do
+  source $keys
+done
+
 # load theme
 for theme in ${(M)zsh_files:#*/zsh/theme.zsh}; do
   source $theme
-done
-
-# load key-bindings
-for keys in ${(M)zsh_files:#*/zsh/keys.zsh}; do
-  source $keys
 done

@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-# Use emacs key bindings
-bindkey -e
-
 # [Ctrl-RightArrow] - move forward one word
 bindkey '^[[1;5C' forward-word
 # [Ctrl-LeftArrow] - move backward one word
@@ -25,7 +22,3 @@ else
   bindkey "^[3;5~" delete-char
   bindkey "\e[3~" delete-char
 fi
-
-# fzf
-zplugin snippet "https://github.com/junegunn/fzf/blob/master/shell/completion.zsh"
-zplugin snippet "https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh"
