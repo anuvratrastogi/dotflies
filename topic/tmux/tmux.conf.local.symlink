@@ -10,7 +10,7 @@ set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
 #   - and iTerm2 is configured to let option key act as +Esc
 #   - and iTerm2 is configured to send [1;9A -> [1;9D for option + arrow keys
 # then uncomment the following line to make Meta + arrow keys mapping work
-set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
+# set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
 
 
 # -- windows & pane creation ---------------------------------------------------
@@ -271,23 +271,16 @@ tmux_conf_theme_clock_style='24'
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
 
+tmux_conf_new_session_prompt=true
+
+set -s escape-time 5
+set -sg repeat-time 200
+
 # increase history size
 set -g history-limit 10000
 
 # start with mouse mode enabled
 set -g mouse on
-
-# force Vi mode
-#   really you should export VISUAL or EDITOR environment variable, see manual
-#set -g status-keys vi
-#set -g mode-keys vi
-
-# replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
 
 # move status line to top
 #set -g status-position top
