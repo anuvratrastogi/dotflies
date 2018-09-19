@@ -5,14 +5,20 @@
 # -----
 
 zplugin light "zsh-users/zsh-completions"
-zplugin light "zsh-users/zsh-autosuggestions"
+
+zplugin ice lucid wait"1" atload"_zsh_autosuggest_start"
+zplugin load "zsh-users/zsh-autosuggestions"
+
+zplugin ice lucid wait"5" atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" lucid
 zplugin light "zdharma/fast-syntax-highlighting"
+
 zplugin light "zdharma/zsh-diff-so-fancy"
 
 # -----
 # alias-i-should-use
 # -----
 
+zplugin ice lucid wait"!0"
 zplugin light "MichaelAquilina/zsh-you-should-use"
 
 # -----
