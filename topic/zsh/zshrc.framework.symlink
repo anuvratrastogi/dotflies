@@ -25,7 +25,6 @@ typeset -i updated_at
 
 libs=($DOTFILES/libs/*)
 zsh_files=($DOTFILES/topic/**/*.zsh)
-updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
 
 # -----
 # libs
@@ -73,12 +72,28 @@ for paths in ${(M)zsh_files:#*/paths.zsh}; do
 done
 
 # compinit hack to make it faster
-autoload -Uz compinit
-updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != "$updated_at" ]; then
-  compinit -i
+autoload -U compaudit compinit
+if [[ $ZSH_DISABLE_COMPFIX != true ]]; then
+  # If completion insecurities exist, warn the user without enabling completions.
+  if ! compaudit &>/dev/null; then
+    # This function resides in the "lib/compfix.zsh" script sourced above.
+    handle_completion_insecurities
+  # Else, enable and cache completions to the desired file.
+  else
+    if [[ -n "${ZSH_COMPDUMP}"(#qN.mh+24) ]]; then
+      compinit -d "${ZSH_COMPDUMP}"
+      compdump
+    else
+      compinit -C
+    fi
+  fi
 else
-  compinit -C -i
+  if [[ -n "${ZSH_COMPDUMP}"(#qN.mh+24) ]]; then
+    compinit -i -d "${ZSH_COMPDUMP}"
+    compdump
+  else
+    compinit -C
+  fi
 fi
 
 # load completions
