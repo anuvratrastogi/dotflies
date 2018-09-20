@@ -2,10 +2,13 @@
 
 exists jabba && {
   JABBA_HOME="$HOME/.jabba"
+  if ! typeset -f jabba &>/dev/null; then
+    export JABBA_BIN=$(which jabba)
+  fi
 
-  jenv() {
+  jabba() {
     local fd3=$(mktemp /tmp/jabba-fd3.XXXXXX)
-    (JABBA_SHELL_INTEGRATION=ON $(which jabba) "$@" 3>| ${fd3})
+    (JABBA_SHELL_INTEGRATION=ON $JABBA_BIN "$@" 3>| ${fd3})
     local exit_code=$?
     eval $(cat ${fd3})
     rm -f ${fd3}
@@ -13,6 +16,8 @@ exists jabba && {
   }
 
   if [ ! -z "$(jabba alias default)" ]; then
-    jabba use default
+    if [ ! -z "$(jabba current)" ]; then
+      jabba use default
+    fi
   fi
 }
