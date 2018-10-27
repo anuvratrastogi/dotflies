@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # cursor functions
-newline() { seq -f '\n' -s "" "${1}"; }
+newline() { 
+  local printcmd="printf ' %.0s' {1..${1}}"
+  eval ${printcmd}
+}
 
 overwrite_prev_line() { ansi --previous-line="${1:-1}" --delete-lines=1; ansi --previous-line="${1:-1}" --no-newline; }
 
@@ -9,7 +12,8 @@ overwrite_prev_line() { ansi --previous-line="${1:-1}" --delete-lines=1; ansi --
 h1() {
   title_length="${#1}"
   space_length=$(( 80 - title_length ))
-  spaces=$(seq -f " " -s "" $space_length)
+  spaces_cmd="printf ' %.0s' {1..$space_length}"
+  spaces="$(eval ${spaces_cmd})"
 
   newline 1; ansi --bold --bg-color=12 --white --no-newline " > ${1^^}${spaces}"; newline 1
 }

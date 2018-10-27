@@ -5,7 +5,7 @@ exists tmux && {
   TPM_TARGET="$HOME/.tmux/plugins"
 
   if [ -d "${TPM_TARGET}/tpm" ]; then
-    notice "Already installed tmux-plugin-manager. Updating..." "yes"
+    notice "Already installed tmux-plugin-manager. Updating..."
     
     pushd . &>/dev/null
     cd "${TPM_TARGET}/tpm"

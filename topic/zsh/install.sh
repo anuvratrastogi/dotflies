@@ -5,7 +5,7 @@ exists zsh && {
   ZPLUGIN_TARGET="${HOME}/.zplugin"
 
   if [ -d "$ZPLUGIN_TARGET/bin" ]; then
-    notice "Already installed zplugin. Updating..." "yes"
+    notice "Already installed zplugin. Updating..."
     
     pushd . &>/dev/null
     cd "${ZPLUGIN_TARGET}/bin"
