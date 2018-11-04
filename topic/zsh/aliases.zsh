@@ -14,6 +14,13 @@ _portuser() {
 
 alias portuser=_portuser
 
+# run a function in sudo
+__sudo_function() {
+  sudo zsh -c "$functions[$1]" "$@"
+}
+
+alias fudo='__sudo_function'
+
 # read profile dump
 function _sort_profile_timings() {
   typeset -a lines
