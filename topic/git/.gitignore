@@ -1,2 +1,2 @@
-# ignore gitcerts
-# gitcerts.pem.symlink
+# ignore user gitcerts
+gitcerts.user.pem.symlink

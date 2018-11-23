@@ -30,3 +30,17 @@ clone() {
 rebase() {
   git pull --rebase origin master &>/dev/null
 }
+
+# append from one file to another
+fappend() {
+  if [ -f "${1}" ]; then
+    cat "$1" >> "$2" &>/dev/null
+  fi
+}
+
+# silent rm
+silrem() {
+  if [ -f "${1}" ]; then
+    rm -f "${1}" &>/dev/null
+  fi
+}
