@@ -15,6 +15,13 @@ zplugin light "zdharma/fast-syntax-highlighting"
 zplugin light "zdharma/zsh-diff-so-fancy"
 
 # -----
+# async
+# -----
+
+zplugin ice atload'async_init'
+zplugin light "mafredri/zsh-async"
+
+# -----
 # alias-i-should-use
 # -----
 
