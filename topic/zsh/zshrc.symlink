@@ -49,6 +49,3 @@ if [[ "$ZSH_PROFILE_STARTUP" == "true" ]]; then
   unsetopt XTRACE
   exec 2>&3 3>&-
 fi
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
