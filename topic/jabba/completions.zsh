@@ -14,4 +14,9 @@ exists jabba && {
     rm -f ${fd3}
     return ${exit_code}
   }
+
+  # If default alias exists and current shell is not jabba
+  if [ ! -z "$(jabba alias default)" ] && [ -z "$(jabba current)" ]; then
+    jabba use default
+  fi
 }
