@@ -25,7 +25,7 @@ zplugin light "mafredri/zsh-async"
 # alias-i-should-use
 # -----
 
-zplugin ice lucid wait"!0"
+zplugin ice lucid wait"!2"
 zplugin light "MichaelAquilina/zsh-you-should-use"
 
 # -----

@@ -6,7 +6,6 @@ exists brew && {
     cleanup)
       (cd "$(brew --repo)" && git prune && git gc)
       command brew cleanup
-      command brew prune
       rm -rf "$(brew --cache)"
       ;;
     bump)
