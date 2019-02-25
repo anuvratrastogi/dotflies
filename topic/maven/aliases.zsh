@@ -13,6 +13,7 @@ exists mvn && {
         command time mvn -am -DskipTests -Dmaven.test.skip=true "$@"
         ;;
       raw)
+        1=()
         command time mvn "$@"
         ;;
     esac

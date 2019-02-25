@@ -46,3 +46,10 @@ zplugin light "paoloantinori/hhighlighter"
 # -----
 
 zplugin snippet "OMZ::plugins/sudo/sudo.plugin.zsh"
+
+# -----
+# enhanCD
+# -----
+
+zplugin ice pick"init.sh"
+zplugin light "b4b4r07/enhancd"
