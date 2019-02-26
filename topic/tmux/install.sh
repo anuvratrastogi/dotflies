@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+exists tmux || {
+  fail "TMUX not installed"
+}
+
 exists tmux && {
   TPM_SOURCE="${TOPICS}/tmux/tpm"
   TPM_TARGET="$HOME/.tmux/plugins"

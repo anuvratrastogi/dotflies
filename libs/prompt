@@ -2,8 +2,10 @@
 
 # cursor functions
 newline() { 
-  local printcmd="printf ' %.0s' {1..${1}}"
-  eval ${printcmd}
+  for i in $(eval echo "{1..${1}}")
+  do
+    echo
+  done
 }
 
 overwrite_prev_line() { ansi --previous-line="${1:-1}" --delete-lines=1; ansi --previous-line="${1:-1}" --no-newline; }
