@@ -51,11 +51,6 @@ source "${HOME}/.zplugin/bin/zplugin.zsh"
 # framework
 # -----
 
-# init
-for init in ${(M)zsh_files:#*/init.zsh}; do
-  source $init
-done
-
 # load plugins
 for plugins in ${(M)zsh_files:#*/plugins.zsh}; do
   source $plugins
@@ -115,3 +110,7 @@ done
 for theme in ${(M)zsh_files:#*/zsh/theme.zsh}; do
   source $theme
 done
+
+# notify
+
+h2 "To (re)load default ca-certificates store run \"certify\" or \"reloadd!\""

@@ -7,6 +7,7 @@ __reload_dotfiles() {
 
 alias reload!='__reload_dotfiles'
 
+
 # Port process holder function
 _portuser() {
   lsof -n -i4TCP:$1 G LISTEN
