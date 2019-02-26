@@ -53,4 +53,4 @@
   whitespace = red reverse
 # curl http://curl.haxx.se/ca/cacert.pem -o ~/.gitcerts.pem
 [http]
-  sslCAInfo = "~/.gitcerts.ca.pem"
+  sslCAInfo = "~/.certs.pem"

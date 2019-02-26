@@ -47,20 +47,13 @@ main() {
   h1 "Checking Compatibility"
   compat::checks
 
+
   # -----
-  # install
+  # main
   # -----
 
   # execute all (in)stallers
   h1 "Configuring system"
-
-  h2 "Installing topics"
-  find -H "$TOPICS" -maxdepth 2 -name 'install.sh' -not -path '*.git*' |
-  while read -r installer;
-  do
-    # shellcheck disable=SC1090
-    source "${installer}"
-  done
 
   # -----
   # link
@@ -78,6 +71,20 @@ main() {
 
   # link dotfiles to $HOME
   link "$DOTFILES_SRC" "$DOTFILES"
+
+
+  # -----
+  # install
+  # -----
+
+  h2 "Installing topics"
+  find -H "$TOPICS" -maxdepth 2 -name 'install.sh' -not -path '*.git*' |
+  while read -r installer;
+  do
+    # shellcheck disable=SC1090
+    source "${installer}"
+  done
+
 
   # -----
   # load zsh

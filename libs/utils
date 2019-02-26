@@ -31,6 +31,11 @@ rebase() {
   git pull --rebase origin master &>/dev/null
 }
 
+# download
+downf() {
+  curl -L "${1}" -o "${2}" &>/dev/null
+}
+
 # append from one file to another
 fappend() {
   if [ -f "${1}" ]; then
@@ -42,5 +47,12 @@ fappend() {
 silrem() {
   if [ -f "${1}" ]; then
     rm -f "${1}" &>/dev/null
+  fi
+}
+
+# create
+touchf() {
+  if [ ! -f "${1}" ]; then
+    touch "${1}" &>/dev/null
   fi
 }
