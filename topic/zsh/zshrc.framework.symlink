@@ -51,6 +51,11 @@ source "${HOME}/.zplugin/bin/zplugin.zsh"
 # framework
 # -----
 
+# init
+for init in ${(M)zsh_files:#*/init.zsh}; do
+  source $init
+done
+
 # load plugins
 for plugins in ${(M)zsh_files:#*/plugins.zsh}; do
   source $plugins
